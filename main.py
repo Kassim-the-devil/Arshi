@@ -32,13 +32,6 @@ updater = tg.Updater(BOT_TOKEN, workers=32, use_context=True)
 dispatcher = updater.dispatcher
 
 
-def start(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    msg = update.effective_message
-    keyb = []
-    keyb.append([InlineKeyboardButton(text="Add me ➕", url=f"http://t.me/{context.bot.username}?startgroup=true")])
-    msg.reply_text(f"Heya\nI'm {context.bot.first_name}\nI can help you to active your Chat", reply_markup=InlineKeyboardMarkup(keyb))
-
 
 def log_user(update: Update, context: CallbackContext):
    chat = update.effective_chat
