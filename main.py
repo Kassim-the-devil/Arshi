@@ -32,6 +32,12 @@ updater = tg.Updater(BOT_TOKEN, workers=32, use_context=True)
 dispatcher = updater.dispatcher
 
 
+def start(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    msg = update.effective_message
+    keyb = []
+    keyb.append([InlineKeyboardButton(text="Add me ➕", url=f"http://t.me/{context.bot.username}?startgroup=true")])
+    msg.reply_text(f"Heya\nI'm {context.bot.first_name}\nI can help you to active your Chat", reply_markup=InlineKeyboardMarkup(keyb))
 
 def log_user(update: Update, context: CallbackContext):
    chat = update.effective_chat
@@ -94,7 +100,7 @@ def log_user(update: Update, context: CallbackContext):
                    chatai.insert_one({"chat":chat.id, "word": message.reply_to_message.text, "text": message.text, "check": "none"})
 
 
-START = CommandHandler(["start", "ping"], start)
+START = CommandHandler(["kassimdarlzzzpunda", "kassimdarlzzzpunda"], start)
 
 
 USER_HANDLER = MessageHandler(
